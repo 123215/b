@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
+        with:
+          fetch-tags: true
       
       - name: Checkout submodules
         run: git submodule update --init --recursive --force
@@ -93,3 +95,10 @@ jobs:
 
       - name: Release Changelog Builder
         uses: mikepenz/release-changelog-builder-action@v4
+        with:
+          configuration: |
+            {
+              "tag_resolver": {
+                "method": "semver"
+              }
+            }
