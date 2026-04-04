@@ -151,9 +151,7 @@ subprojects {
                         keystore.inputStream().use(this::load)
                     }
 
-                    // 从 signing.properties 读取 keystore 路径
-                    val keystorePath = prop.getProperty("keystore.path") ?: "release.keystore"
-                    storeFile = rootProject.file(keystorePath)
+                    storeFile = rootProject.file("release.keystore")
                     storePassword = prop.getProperty("keystore.password")!!
                     keyAlias = prop.getProperty("key.alias")!!
                     keyPassword = prop.getProperty("key.password")!!
