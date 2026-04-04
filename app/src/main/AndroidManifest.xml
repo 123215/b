@@ -188,6 +188,7 @@
             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
             android:value="explanation_for_special_use"/>
         </service>
+
         <service
             android:name=".TileService"
             android:exported="true"
@@ -215,6 +216,17 @@
                 <action android:name="android.provider.Telephony.SECRET_CODE" />
                 <!-- 252746382 is the name of Clash Meta in T9 -->
                 <data android:scheme="android_secret_code" android:host="252746382" />
+            </intent-filter>
+        </receiver>
+
+        <!-- ExternalControlReceiver: 用于 Tasker 等自动化工具的后台控制 -->
+        <receiver
+            android:name=".ExternalControlReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.github.metacubex.clash.meta.action.START_CLASH" />
+                <action android:name="com.github.metacubex.clash.meta.action.STOP_CLASH" />
+                <action android:name="com.github.metacubex.clash.meta.action.TOGGLE_CLASH" />
             </intent-filter>
         </receiver>
     </application>
