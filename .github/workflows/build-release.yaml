@@ -121,6 +121,11 @@ jobs:
           tag_name: ${{ inputs.release-tag }}
           files: app/build/outputs/apk/meta/release/*
           generate_release_notes: true
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ClashMeta-APK
+          path: app/build/outputs/apk/meta/release/*.apk
 
       - name: Release Changelog Builder
         uses: mikepenz/release-changelog-builder-action@v4.1.1
